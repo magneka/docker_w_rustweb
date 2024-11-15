@@ -12,10 +12,10 @@ struct JamJar {
 fn main() {
    
 
-    println!("Starting a server with address http://127.0.0.1:8085");
+    println!("Starting a jamserver with address http://0.0.0.0:80");
 
     // LAGT TIL POST AV JSON OG FORM
-    rouille::start_server_with_pool("0.0.0.0:8085", Some(6),
+    rouille::start_server_with_pool("0.0.0.0:80", Some(6),
     | req: &Request | { 
         rouille::router!(req, 
             (GET) (/) => {

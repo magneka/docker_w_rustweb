@@ -15,8 +15,14 @@ RUN cargo build --release
 # SECOND PART - CREATE RUN ENVIRONMENT
 # ------------------------------------
 # Start a new stage to create a smaller image without unnecessary build dependencies
-FROM debian:stable-slim
+# genererer 76 GB image
+#FROM debian:stable-slim
 #FROM bitnami/minideb:latest
+# genererer 24 GB image
+#FROM gcr.io/distroless/cc
+# genererer 22 GB image
+##FROM gcr.io/distroless/static fungerer ikke
+FROM gcr.io/distroless/cc-debian12
 
 # Set the working directory
 WORKDIR /usr/src/app
