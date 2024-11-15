@@ -1,0 +1,21 @@
+Bygg containeren med 
+>docker build -t magneka/mka-rust-rouille -f .\Dockerfile .
+
+Tag containeren med et versjonsnummer
+>docker tag magneka/mka-rust-rouille:latest magneka/mka-rust-rouille:01
+
+push
+>docker push magneka/mka-rust-rouille
+
+
+Se inni containeren
+>docker run -it mka-rust-rouille /bin/bash
+
+Kjør hello world
+docker run -it mka-rust-rouille
+
+Kjør rett fra docker repository
+docker run magneka/mka-rust-rouille run -d -p 80:8080
+docker run -p 8091:80 magneka/mka-rust-rouille 
+
+docker exec -it  magneka/mka-rust-rouille bash

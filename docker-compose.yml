@@ -1,0 +1,12 @@
+version: 3.9"
+
+services:  
+  tttmka:
+     
+    build:
+      context: .
+      dockerfile: Dockerfile
+      
+    container_name: rustbuilderrouille
+
+    tty: true 
