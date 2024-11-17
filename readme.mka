@@ -1,5 +1,9 @@
 Bygg containeren med 
 >docker build -t magneka/mka-rust-rouille -f .\Dockerfile .
+>docker build -t magneka/mka-rust-rouille .
+
+Bygg for intel platform
+>docker buildx build -t magneka/mka-rust-rouille --platform linux/amd64 .
 
 Tag containeren med et versjonsnummer
 >docker tag magneka/mka-rust-rouille:latest magneka/mka-rust-rouille:01

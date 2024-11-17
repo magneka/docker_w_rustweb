@@ -19,9 +19,11 @@ fn main() {
     | req: &Request | { 
         rouille::router!(req, 
             (GET) (/) => {
+                println!("Handling GET /");
                 Response::empty_204()
             },
             (GET) (/jam) => {
+                println!("Handling GET /jam");
                 let jar = JamJar {
                     flavor: "Strawberry".to_string(),
                     volume: 255.0,
@@ -29,10 +31,12 @@ fn main() {
                 Response::json(&jar)   
             },
             (POST) (/jam) => {
+                println!("Handling POST /JAM");
                 let json: JamJar = try_or_400!(rouille::input::json_input(req));
                 Response::text(format!("flavor's value is {}", json.flavor))
             },
-            (POST) (/form) => {         
+            (POST) (/form) => {   
+                    println!("Handling POST /form");      
                     let input = try_or_400!(post_input!(req, {
                         field1: u32,
                         field2: String,
@@ -41,11 +45,13 @@ fn main() {
                     Response::text(format!("the value of field1 is: {}", input.field1))                
             },
             (GET) (/jamform) => {
+                println!("Handling GET /jamform");
                 // Show a html page with form
                 rouille::Response::html(JAMFORM)
             },
             (POST) (/jamform) => {handle_jamform(req)},
             _ => {
+                println!("Handling unknown request");
                 Response::empty_404()
             }
         )         
@@ -57,6 +63,7 @@ fn handle_jamform(request: &Request) -> Response {
         jamflavor: String,
         order_count: u32,
     }));
+    println!("Handling POST /jamform: {:?}", input);                               
 
     Response::text(format!("the jamflavor is: {}", input.jamflavor))
 }
